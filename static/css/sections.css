@@ -1,0 +1,33 @@
+.labels{
+  font-weight: bold;
+  font-family: cursive;
+  font-size: 25;
+}
+.values{
+  font-weight: bold;
+  font-style: oblique;
+  font-size: 20;
+}
+.values code{
+  font-style: normal;
+}
+.name{
+  color: blue;
+  font-size: 35;
+}
+.brief{
+  font-weight: bolder;
+  margin-left: 100px;
+  padding-top: 10%;
+}
+.contact a:link, .contact a:visited{
+  margin-right: 50px;
+  font-size: 20;
+  text-decoration: none;
+  font-weight: lighter;
+  padding-bottom: 10%;
+  font-size: 18;
+}
+.contact a:hover{
+  text-decoration: underline;
+}
