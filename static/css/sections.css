@@ -1,4 +1,5 @@
 .labels{
+  padding-left: 10%;
   font-weight: bold;
   font-family: cursive;
   font-size: 25;
@@ -12,13 +13,14 @@
   font-style: normal;
 }
 .name{
+  padding-left: 10%;
   color: blue;
   font-size: 35;
 }
 .brief{
   font-weight: bolder;
-  margin-left: 100px;
-  padding-top: 10%;
+  padding-left: 10%;
+  padding-top: 5%;
 }
 .contact a:link, .contact a:visited{
   margin-right: 50px;
