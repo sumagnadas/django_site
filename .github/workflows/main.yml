@@ -1,0 +1,50 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - name: Clone the repo.
+        run: |
+          git clone https://github.com/sumagnadas/sumagnadas.github.io.git $GITHUB_WORKSPACE/../website
+      
+      # Runs a single command using the runners shell
+      - name: Generate the static site
+        run: |
+          cd $GITHUB_WORKSPACE
+          sudo python manage.py distill-local ./output/ --force
+      
+      - name: Copy the static files.
+        run: |
+          $COMMIT_MSG=$(git show -s --format=%B -n 1)
+          cp $GITHUB_WORKSPACE/output/** $GITHUB_WORKSPACE/../website/ -r
+          cd $GITHUB_WORKSPACE/../website
+          git add .
+          git commit -m "$COMMIT_MSG"
+
+      # Runs a set of commands using the runners shell
+      - name: Push the repo/Publish the static website.
+        run: |
+          cd $GITHUB_WORKSPACE/../website/
+          git config --local user.email "sumagnadas@gmail.com"
+          git config --local user.name "sumagnadas"
+          git push
+          
