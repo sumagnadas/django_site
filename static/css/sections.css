@@ -46,7 +46,6 @@
 }
 
 .tooltip .tooltiptext {
-  text-decoration: none;
   visibility: hidden;
   width: auto;
   height: auto;
@@ -54,7 +53,6 @@
   color: #fff;
   text-align: center;
   border-radius: 6px;
-  padding: 5px 0;
 
   /* Position the tooltip */
   position: absolute;
@@ -62,12 +60,5 @@
 }
 
 .tooltip:hover .tooltiptext {
-  text-decoration: none;
   visibility: visible;
-}
-
-.tooltip:hover .tooltiptext iframe{
-  text-decoration: none;
-  width: auto;
-  height: auto;
 }
