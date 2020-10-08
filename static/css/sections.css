@@ -4,6 +4,12 @@
   font-family: cursive;
   font-size: 25;
 }
+
+.contact{
+  padding-left: 10%;
+  font-weight: bolder;
+  font-size: 20;
+}
 .values{
   font-weight: bold;
   font-style: oblique;
@@ -22,14 +28,46 @@
   padding-left: 10%;
   padding-top: 5%;
 }
-.contact a:link, .contact a:visited{
+.link{
   margin-right: 50px;
-  font-size: 20;
-  text-decoration: none;
-  font-weight: lighter;
-  padding-bottom: 10%;
-  font-size: 18;
 }
-.contact a:hover{
+.link a:link, a:visited{
+  text-decoration: none;
+  font-size: 18;
+  font-weight: lighter;
+  color: blue;
+}
+.link a:hover{
   text-decoration: underline;
+}
+.tooltip {
+  position: relative;
+  display: inline-block
+}
+
+.tooltip .tooltiptext {
+  text-decoration: none;
+  visibility: hidden;
+  width: auto;
+  height: auto;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  text-decoration: none;
+  visibility: visible;
+}
+
+.tooltip:hover .tooltiptext iframe{
+  text-decoration: none;
+  width: auto;
+  height: auto;
 }

@@ -1,15 +1,16 @@
-<link rel="stylesheet" href="/static/css/base.css">
-<link rel="stylesheet" href="/static/css/sections.css">
+<link rel="stylesheet" href="/static/css/base.css?{% now "U" %}">
+<link rel="stylesheet" href="/static/css/sections.css?{% now "U" %}">
 <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
     <title>{% block title %}Sumagna Das' Website{% endblock %}</title>
 </head>
 
 <body>
     <nav>
         <a href="{% url 'index' %}">Home</a>
-        <a href="#contact">Contact</a>
+        <a href="/about/#contact">Contact</a>
         <a href="{% url 'about' %}">About</a>
         <a href="{% url 'blog:index' %}">Blog</a>
     </nav>

@@ -10,4 +10,9 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'site/about.html')
+    timezone.activate(timezone.get_current_timezone())
+    birth_date = datetime_safe.datetime(2006, 1, 11, tzinfo=timezone.get_current_timezone())
+    age = (timezone.now() - birth_date).days / 365
+    if age > ((timezone.now() - birth_date).days // 365):
+        age = str(int(age)) + "+"
+    return render(request, 'site/about.html', {'age': age})

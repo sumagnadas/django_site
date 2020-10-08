@@ -4,7 +4,7 @@ hr{
 }
 
 body{
-  background-color: #6c91ee;
+  background-color: #71acd8;
 }
 
 nav{
@@ -41,7 +41,8 @@ nav a:hover{
 }
 
 img{
-  padding-left: 10%;
+  width: 64;
+  height: 64;
 }
 
 /*nav a::after {
