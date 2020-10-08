@@ -1,10 +1,12 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Deploy to github pages
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
+  schedule:
+    - cron: "0 0 * * *"
   push:
     branches: [ master ]
   pull_request:
@@ -21,30 +23,39 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+
+      - name: Setup ssh
+        uses: webfactory/ssh-agent@v0.4.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       
       - name: Clone the repo.
         run: |
-          git clone https://github.com/sumagnadas/sumagnadas.github.io.git $GITHUB_WORKSPACE/../website
+          git clone git@github.com:sumagnadas/sumagnadas.github.io website
       
-      # Runs a single command using the runners shell
+      - name: Download the dependencies
+        run: |
+            python3 -m pip install -U pip
+            python3 -m pip install setuptools
+            python3 -m pip install -r requirements.txt
+            
       - name: Generate the static site
         run: |
           cd $GITHUB_WORKSPACE
-          sudo python manage.py distill-local ./output/ --force
+          mkdir output
+          python3 manage.py distill-local ./output/ --force --collectstatic
       
-      - name: Copy the static files.
+      - name: Configure git
         run: |
-          $COMMIT_MSG=$(git show -s --format=%B -n 1)
-          cp $GITHUB_WORKSPACE/output/** $GITHUB_WORKSPACE/../website/ -r
-          cd $GITHUB_WORKSPACE/../website
+          git config --global user.email "sumagnadas@gmail.com"
+          git config --global user.name "sumagnadas"
+
+      - name: Copy the static files and push it to the repo.
+        run: |
+          COMMIT_MSG=$(git show -s --format=%B -n 1)
+          cp output/** website/ -r
+          cd website
           git add .
           git commit -m "$COMMIT_MSG"
-
-      # Runs a set of commands using the runners shell
-      - name: Push the repo/Publish the static website.
-        run: |
-          cd $GITHUB_WORKSPACE/../website/
-          git config --local user.email "sumagnadas@gmail.com"
-          git config --local user.name "sumagnadas"
           git push
           

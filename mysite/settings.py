@@ -122,6 +122,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    BASE_DIR / "blog" / "static",
 ]
-STATIC_ROOT = "/mnt/sda2/python/projects/mysite/static_root"
+STATIC_ROOT = str(BASE_DIR) + "/static_root"
