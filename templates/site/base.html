@@ -10,8 +10,8 @@
 <body>
     <nav>
         <a href="{% url 'index' %}">Home</a>
-        <a href="/about/#contact">Contact</a>
-        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'd_about' %}#contact">Contact</a>
+        <a href="{% url 'd_about' %}">About</a>
         <a href="{% url 'blog:index' %}">Blog</a>
     </nav>
     {% block content %}{% endblock %}

@@ -15,11 +15,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django_distill import distill_path
 from . import views
+
+
+def get_index():
+    return None
+
 
 urlpatterns = [
     path('', views.index, name='index'),
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls')),
     path('about/', views.about, name='about'),
+]
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('blog/', include('blog.urls')),
+    distill_path('', views.index, name='index', distill_func=get_index, distill_file="index.html"),
+    distill_path('about.html', views.about, name='d_about', distill_func=get_index, distill_file="about.html"),
+    #path('about/', views.about, name='about'),
 ]
