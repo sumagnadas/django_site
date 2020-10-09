@@ -56,6 +56,6 @@ jobs:
           cp output/** website/ -r
           cd website
           git add .
-          git commit -m "$COMMIT_MSG"
+          git commit -m "Update the site for '$COMMIT_MSG'"
           git push
           
