@@ -43,7 +43,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           mkdir output
-          python3 manage.py distill-local ./output/ --force --collectstatic
+          env DISTILL_GEN="true" python3 manage.py distill-local ./output/ --force --collectstatic
       
       - name: Configure git
         run: |
