@@ -8,17 +8,16 @@ experience = [
      "as": "Finalist",
      "desc": "Got selected as a Finalist for the organization <italic>BRL-CAD</italic>."}
 ]
-
+if_distill = "DISTILL_GEN" in environ
 
 def index(request):
     timezone.activate(timezone.get_current_timezone())
     birth_date = datetime_safe.datetime(2006, 1, 11, tzinfo=timezone.get_current_timezone())
     age = (timezone.now() - birth_date).days // 365
-    return render(request, 'site/index.html', {'age': age})
+    return render(request, 'site/index.html', {'age': age, "if_distill": if_distill})
 
 
 def about(request):
-    if_distill = "DISTILL_GEN" in environ
     timezone.activate(timezone.get_current_timezone())
     birth_date = datetime_safe.datetime(2006, 1, 11, tzinfo=timezone.get_current_timezone())
     age = (timezone.now() - birth_date).days / 365
