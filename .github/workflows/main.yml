@@ -52,7 +52,7 @@ jobs:
 
       - name: Copy the static files and push it to the repo.
         run: |
-          if [$GITHUB_EVENT_NAME == "schedule"]; then $COMMIT_MSG="Update the age on site"; else $COMMIT_MSG=$(git show -s --format=%B -n 1); fi
+          if [ GITHUB_EVENT_NAME == "schedule" ]; then COMMIT_MSG="Update the age on site"; else COMMIT_MSG=$(git show -s --format=%B -n 1); fi
           cp output/** website/ -r
           cd website
           git add .
