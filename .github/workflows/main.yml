@@ -6,7 +6,7 @@ name: Deploy to github pages
 # events but only for the master branch
 on:
   schedule:
-    - cron: "0 0 * * *"
+    cron: "0 1 11-12 JAN *"
   push:
     branches: [ master ]
   pull_request:
@@ -52,7 +52,7 @@ jobs:
 
       - name: Copy the static files and push it to the repo.
         run: |
-          COMMIT_MSG=$(git show -s --format=%B -n 1)
+          if [$GITHUB_EVENT_NAME == "schedule"]; then $COMMIT_MSG="Update the age on site"; else $COMMIT_MSG=$(git show -s --format=%B -n 1); fi
           cp output/** website/ -r
           cd website
           git add .
