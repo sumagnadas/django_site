@@ -35,5 +35,5 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     distill_path('', views.index, name='index', distill_func=get_index, distill_file="index.html"),
     distill_path('about.html', views.about, name='d_about', distill_func=get_index, distill_file="about.html"),
-    #path('about/', views.about, name='about'),
+    path('about/', views.about, name='about'),
 ]
