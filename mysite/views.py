@@ -3,12 +3,24 @@ from django.utils import timezone, datetime_safe
 from os import environ
 
 experience = [
-    {"date": "Decemeber 2, 2019",
+    {"date": "Decemeber 2, 2019 - January 31, 2020",
      "exp": "Google Code-In",
      "as": "Finalist",
-     "desc": "Got selected as a Finalist for the organization <italic>BRL-CAD</italic>."}
+     "desc": "Got selected as a Finalist for the organization BRL-CAD."},
+    {"date": "Decemeber 2, 2019 - Present",
+     "exp": "BRL-CAD",
+     "as": "Contributor",
+     "desc": "Contributing to BRL-CAD project on Sourceforge."},
+    {"date": "October 4, 2020 - Present",
+     "exp": "Zulip Terminal",
+     "as": "Contributor",
+     "desc": "Contributing to Zulip Terminal project on Github."},
 ]
+direc = list()
+for i in range(0, len(experience)):
+    direc.append("left" if i % 2 == 0 else "right")
 if_distill = "DISTILL_GEN" in environ
+
 
 def index(request):
     timezone.activate(timezone.get_current_timezone())
@@ -23,4 +35,4 @@ def about(request):
     age = (timezone.now() - birth_date).days / 365
     if age > ((timezone.now() - birth_date).days // 365):
         age = str(int(age)) + "+"
-    return render(request, 'site/about.html', {'age': age, "experience": experience, "if_distill": if_distill})
+    return render(request, 'site/about.html', {'age': age, "if_distill": if_distill, "list": zip(experience, direc)})

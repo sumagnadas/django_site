@@ -11,13 +11,17 @@
     <nav>
         <a href="{% url 'index' %}">Home</a>
     {% if if_distill %}
+        <a href="{% url 'd_about' %}">About</a>
         <a href="{% url 'd_about' %}#contact">Contact</a>
-        <a href="{% url 'd_about' %}">About</a>
+        <a href="{% url 'd_about' %}#experience">Experience</a>
     {% else %}
+        <a href="{% url 'about' %}">About</a>
         <a href="{% url 'about' %}#contact">Contact</a>
-        <a href="{% url 'd_about' %}">About</a>
+        <a href="{% url 'about' %}#experience">Experience</a>
     {% endif %}
-        <a href="{% url 'blog:index' %}">Blog</a>
+        {% comment "To be added area" %}
+            <a href="{% url 'blog:index' %}">Blog</a>
+        {% endcomment %}
     </nav>
     {% block content %}{% endblock %}
 </body>

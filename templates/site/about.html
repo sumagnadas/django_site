@@ -1,6 +1,7 @@
 {% extends 'site/base.html' %}
 {% load static %}
 
+{% block title %}About Me{% endblock %}
 {% block content %}
 
 <!-- Normal Info -->
@@ -11,32 +12,32 @@
 <span class="labels">Hobbies:</span> <span class="values">Programming, Gaming, Sports</span><br><br>
 
 <!-- Languages and tools-->
-<span class="labels">Languages and tools I know:</span><br>
+<div><span class="labels">Languages and tools I know:</span><br>
     <a href="http://python.org"><img style="padding-left: 10%;" src="{% static 'images/python.png' %}"></a>
     <a href="http://isocpp.org"><img src="{% static 'images/cpp_logo.png' %}"></a>
     <a href="http://git-scm.com"><img src="{% static 'images/git.png' %}"></a>
     <a href="http://github.com/sumagnadas"><img src="{% static 'images/github.png' %}" alt="" srcset=""></a>
     <a href="http://code.visualstudio.com"><img src="{% static 'images/vscode.png' %}" alt=""></a>
-<br><br>
+<br><br></div>
 
 <!-- Frameworks -->
-<span class="labels">Frameworks I know:</span><br>
+<div><span class="labels">Frameworks I know:</span><br>
     <a href="http://flask.palletsprojects.com"><img style="margin-left: 10%; width: auto; background-color: white;" src="{% static 'images/flask.svg' %}" alt=""></a>
     <a href="http://www.djangoproject.com"><img style="width: auto;" src="{% static 'images/django.png' %}" alt=""></a>
     <a href="http://pytest.org"><img src="{% static 'images/pytest.png' %}" alt=""></a>
     <a href="https://wiki.qt.io/Qt_for_Python"><img src="{% static 'images/pyside.png' %}"></a>
-<br><br>
+<br><br></div>
 
 <span style="margin-left: 10%;" class="values">I currently contribute to <a href="https://brlcad.org/">BRL-CAD</a> and <a href="https://github.com/zulip/zulip-terminal">Zulip Terminal</a></span><br><br><br>
 
 <!-- Contact Info -->
 <span id="contact">
     <div class="brief" style="margin-top: -5%;"><h1>Contact</h1></div>
-    <span class="contact"><img style="width: 19; height: 19;" src="{% static 'images/github-icon.png' %}"> Github profile: </span> <span class="link"><div class="tooltip"><a href="https://github.com/sumagnadas">Sumagna Das</a><span class="tooltiptext"><div class="github-card" data-github="sumagnadas" data-width="400" data-height="150" data-theme="default"></div>
+    <span class="contact"><img style="width: 19; height: 19;" src="{% static 'images/github-icon.png' %}"> Github profile: </span> <span class="link"><div class="tooltip"><a href="https://github.com/sumagnadas">sumagnadas</a><span class="tooltiptext"><div class="github-card" data-github="sumagnadas" data-width="400" data-height="150" data-theme="default"></div>
     <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script></span></span></div>
     <br>
-    <span class="contact"><img style="width: 19; height: auto" src="{% static 'images/gmail.png' %}"> Gmail:</span> <span class="link"><a href="mailto:sumagnadas@gmail.com">Sumagna Das</a></span>
-</span>
+    <span class="contact"><img style="width: 19; height: auto" src="{% static 'images/gmail.png' %}"> Gmail:</span> <span class="link"><a href="mailto:sumagnadas@gmail.com">sumagnadas@gmail.com</a></span>
+</span><br><br><br></span>
 
 <!-- Github Stats -->
 <div class="brief" style="margin-top: -5%;">
@@ -44,6 +45,21 @@
 </div>
 <span style="padding-left: 10%;">
     <a href="https://github.com/sumagnadas"><img style="width: auto; height:auto" src="https://github-readme-stats.vercel.app/api/top-langs/?username=sumagnadas&layout=compact&theme=tokyonight"><img style="width: auto; height:auto" src="https://github-readme-stats.vercel.app/api?username=sumagnadas&show_icons=true&theme=tokyonight" alt=""></a>
-</span>
+</span><br>
 
+<div id="experience" class="exp-head"><h1>Experiences (till date):</h1></div>
+<div class="timeline">
+    {% for i, j in list %}
+        <div class="container {{ j }}">
+            <div class="content">
+                <h2>{{i.date}}</h2>
+                <hr>
+                <h3>{{ i.exp }}</h3>
+                <h4>{{ i.as }}</h4>
+                <p>
+                    {{ i.desc }}
+                </p>
+            </div>
+        </div>
+{% endfor %}
 {% endblock %}
