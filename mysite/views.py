@@ -5,6 +5,7 @@ from os import environ
 experience = [
     {"date": "Decemeber 2, 2019 - January 31, 2020",
      "exp": "Google Code-In",
+     'new_period': '2019-2020',
      "as": "Finalist",
      "desc": "Got selected as a Finalist for the organization BRL-CAD."},
     {"date": "Decemeber 2, 2019 - Present",
@@ -12,6 +13,7 @@ experience = [
      "as": "Contributor",
      "desc": "Contributing to BRL-CAD project on Sourceforge."},
     {"date": "October 4, 2020 - Present",
+     'new_period': '2020-2021',
      "exp": "Zulip Terminal",
      "as": "Contributor",
      "desc": "Contributing to Zulip Terminal project on Github."},

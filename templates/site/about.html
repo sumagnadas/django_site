@@ -50,7 +50,10 @@
 <div id="experience" class="exp-head"><h1>Experiences (till date):</h1></div>
 <div class="timeline">
     {% for i, j in list %}
-        <div class="container {{ j }}">
+        {% if i.new_period %}
+        <div class="left">{{ i.new_period }}</div>
+        {% endif %}
+        <div class="container right">
             <div class="content">
                 <h2>{{i.date}}</h2>
                 <hr>
