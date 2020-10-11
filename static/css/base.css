@@ -5,30 +5,33 @@ hr{
 
 body{
   background-color: #71acd8;
+  margin: 0px;
 }
 
 nav{
   margin-bottom: auto;
-  margin-top: -0.56%;
   margin-left: auto;
   margin-right: auto;
   border-width: medium;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   border-color: black;
-  max-width: fit-content;
   width: max-content;
-  height: 45;
+  height: 45px;
   background-color: rgb(255, 255, 255);
 } 
 
-nav a:link, nav a:visited{
+nav a:link{
     margin-top: 3%;
-    margin-left: 20;
-    margin-right: 20;
+    margin-left: 20px;
+    margin-right: 20px;
     color: rgb(2, 2, 2);
     text-decoration: none;
-    margin-bottom: 100;
+    margin-bottom: 100px;
+}
+
+nav a:visited{
+  color: rgb(2, 2, 2);
 }
 
 nav a {
@@ -44,18 +47,9 @@ img{
   width: 64;
   height: 64;
 }
-
-/*nav a::after {
-  margin-top: 10;
-  text-align: center;
-  content: '';
-  width: 0px;
-  height: 9px;
-  display: block;
-  background: blue;
-  transition: 100ms;
-}
-
-nav a:hover::after{
-  width: 100%;
+@media screen and (max-width: 600px){
+  nav a:link{
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 }

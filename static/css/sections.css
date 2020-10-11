@@ -31,10 +31,13 @@
 .link{
   margin-right: 50px;
 }
-.link a:link, a:visited{
+.link a:link{
   text-decoration: none;
-  font-size: 18;
+  font-size: 18px;
   font-weight: lighter;
+  color: blue;
+}
+.link  a:visited{
   color: blue;
 }
 .link a:hover{
@@ -70,15 +73,25 @@
   margin: 0 auto;
 }
 
+/* The arrow pointing downwards */
+.timeline::before{
+content: '';
+position: absolute;
+top: 100%;
+border: medium solid white;
+border-width: 10px 10px 10px;
+  border-color: white transparent transparent transparent;
+  left: 29.3%;
+}
 /* The actual timeline (the vertical ruler) */
 .timeline::after {
   content: '';
   position: absolute;
   width: 6px;
   background-color: white;
-  top: 0;
+  top: 34px;
   bottom: 0;
-  left: 30%
+  left: 29.8%;
 }
 
 /* Container around content */
@@ -103,15 +116,14 @@
   z-index: 1;
 }
 .left{
-  max-width: 14%;
   left: 0%;
   font-size: x-large;
   font-weight: bold;
   position: relative;
-  margin-right: 0%;
-  margin-left: 10%;
-  display: inline;
-  top: 45;
+  margin-right: auto;
+  margin-left: 27%;
+  top: 4px;
+  margin-top: 20px;
 }
 /* Place the container to the right */
 .right {
@@ -150,6 +162,10 @@
 /* Place the timelime to the left */
   .timeline::after {
     left: 31px;
+  }
+/* Place the ending arrow correctly at the end of the ruler */
+  .timeline::before{
+    left: 24px;
   }
 
 /* Full-width containers */

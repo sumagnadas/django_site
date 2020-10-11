@@ -48,11 +48,11 @@
 </span><br><br>
 
 <div id="experience" class="exp-head"><h1>Experiences (till date):</h1></div>
+{% for i, j in list %}
+{% if i.new_period %}
+<div class="left">{{ i.new_period }}</div>
 <div class="timeline">
-    {% for i, j in list %}
-        {% if i.new_period %}
-        <div class="left">{{ i.new_period }}</div>
-        {% endif %}
+{% endif %}
         <div class="container right">
             <div class="content">
                 <h2>{{i.date}}</h2>
@@ -64,5 +64,10 @@
                 </p>
             </div>
         </div>
-{% endfor %}
+    {% if not i.new_period %}
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+    <div class="left" style="font-weight:normal; margin-left: 20%;">New Experiences ahead......</div>
 {% endblock %}
