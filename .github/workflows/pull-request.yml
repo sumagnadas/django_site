@@ -5,9 +5,7 @@ name: Deploy to github pages
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
-  schedule:
-    - cron: "0 1 11-12 JAN *"
-  push:
+  pull_request:
     branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -53,7 +51,7 @@ jobs:
           if [ GITHUB_EVENT_NAME == "schedule" ]; then COMMIT_MSG="Update the age on site"; else COMMIT_MSG=$(git show -s --format=%B -n 1); fi
           cp output/** website/ -r
           cd website
+          git checkout -b $(git branch --show-current)
           git add .
           git commit -m "Update the site for '$COMMIT_MSG'"
           git push
-          
