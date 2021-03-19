@@ -48,10 +48,11 @@ jobs:
 
       - name: Copy the static files and push it to the repo.
         run: |
+          branch=$(git branch --show-current)
           if [ GITHUB_EVENT_NAME == "schedule" ]; then COMMIT_MSG="Update the age on site"; else COMMIT_MSG=$(git show -s --format=%B -n 1); fi
           cp output/** website/ -r
           cd website
-          git checkout -b $(git branch --show-current)
+          git checkout -b $branch
           git add .
           git commit -m "Update the site for '$COMMIT_MSG'"
           git push
