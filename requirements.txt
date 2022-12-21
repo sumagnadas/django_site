@@ -11,7 +11,7 @@ django-freeze==0.6.4
 flake8==3.8.3
 html5lib==1.1
 idna==2.10
-isort==5.5.4
+isort==5.11.4
 lazy-object-proxy==1.4.3
 mccabe==0.6.1
 mypy-extensions==0.4.3
